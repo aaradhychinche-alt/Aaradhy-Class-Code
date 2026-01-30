@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        -It is a string 
+        -Looks like an object
+        -Is not an object until you convert it 
+    </div>
+    <script>
+        let jsonStr ='{"name":aaradhy ,"age":17}';
+        let obj = JSON.parse(jsonStr);// parse is used to convert into obj
+        console.log(obj);
+
+
+        let student = {
+            name : "aaradhy",
+            age : 17
+
+        };
+        let jsondata = JSON.stringify(student);
+    </script>
+</body>
+</html>
