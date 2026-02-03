@@ -7,26 +7,37 @@ button.addEventListener("click",function(){
   const location = input.value.trim();
   
   //calling api 
-    async function fn() {
+  
+  fetchWheather().then((data)=>{
+        updateDom(data)
+  })
+    
+  
+
+
+    async function fetchWheather() {
         console.log("Inside function");
         const apikey = `http://api.weatherapi.com/v1/current.json?key=eb14b1d04463469cbf542806262301&q=${location}&aqi=no`;
         const response = await fetch(apikey) ;
-        
+        if (response.status==400) {
+    alert(`API Error: ${response.status}`);
+  }
+
         console.log(response);
         const data = await response.json();
-        const locationName = data.location.name;
+        return data
+      
+      }
+
+function updateDom(data){
+   const locationName = data.location.name;
         const temperature = data.current.temp_c; 
         const localTime = data.location.localtime;
         nam.textContent = locationName;
         nam2.textContent= temperature+" ℃";
         nam3.textContent = localTime;
-
-
-
-      }
-
-
-      fn();
+}
+      
 
     input.value= null
 })
